@@ -5,9 +5,15 @@
 #include <string.h>
 
 typedef enum {
-	IDLE,
-	NEXT,
-} ScreenNames_t;
+	ScrIdle_State,
+	ScrNext_State,
+} ScreenState_t;
+
+typedef enum {
+    BtnUp_Event,
+    BtnDown_Event,
+    BtnNext_Event,
+} ScreenEvent_t;
 
 typedef enum {
     Titled,
@@ -27,7 +33,7 @@ typedef struct {
 } ScreenSelector_t;
 
 typedef struct {
-    ScreenNames_t name;
+    ScreenState_t state;
     char title[20];
     char subtitle[20];
 
@@ -43,9 +49,9 @@ typedef struct {
 } ScreenModel_t;
 
 typedef struct {
-    ScreenNames_t upModel;
-    ScreenNames_t downModel;
-    ScreenNames_t nextModel;
+    ScreenState_t upModel;
+    ScreenState_t downModel;
+    ScreenState_t nextModel;
     // const ScreenModel_t *upModel;
     // const ScreenModel_t *downModel;
     // const ScreenModel_t *nextModel;
